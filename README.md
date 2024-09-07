@@ -2,7 +2,8 @@
 
 ![image](https://github.com/user-attachments/assets/f1585171-1e05-496d-8e92-edf46d88dfd6)
 
-Este repositório contém um projeto para gerar um boletim de vulnerabilidades utilizando dados obtidos da API NVD (National Vulnerability Database). O projeto permite visualizar as vulnerabilidades de acordo com sua severidade (Crítica, Alta, Média e Baixa), e exibe detalhes dessas vulnerabilidades em um formato HTML responsivo.
+Este repositório contém um projeto para gerar um boletim de vulnerabilidades utilizando dados obtidos da API NVD (National Vulnerability Database). 
+O projeto permite visualizar as vulnerabilidades de acordo com sua severidade (Crítica, Alta, Média e Baixa), e exibe detalhes dessas vulnerabilidades em um formato HTML responsivo.
 
 ## Estrutura do Projeto
 
