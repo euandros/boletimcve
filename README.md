@@ -1,5 +1,12 @@
 # Boletim de Vulnerabilidades
 
+![Segmento](https://img.shields.io/badge/Segmento_:-Segurança_da_Informação-blue?style=flat-square) 
+![Fase](https://img.shields.io/badge/Fase_:-Desenvolvimento-orange?style=flat-square) 
+![Versão](https://img.shields.io/badge/versão_:-1.0-darkyellow?style=flat-square) 
+![Tecnologias](https://img.shields.io/badge/Tecnologias_:-NVDLib,_Jinja2,_Pandas,_Plotly-darkyellow?style=flat-square) 
+
+<p style='text-align: justify;'> 
+
 ![image](https://github.com/user-attachments/assets/f1585171-1e05-496d-8e92-edf46d88dfd6)
 
 Este repositório contém um projeto para gerar um boletim de vulnerabilidades utilizando dados obtidos da API NVD (National Vulnerability Database). 
