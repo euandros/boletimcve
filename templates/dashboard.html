@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim de Vulnerabilidades</title>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js-dist"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #212529;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2em;
+        }
+        .chart-container {
+            margin: 40px 0;
+        }
+        .severity-buttons {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .severity-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 1em;
+            flex: 1 1 200px;  /* Botões flexíveis */
+            max-width: 200px;  /* Limite de largura */
+            font-weight: bold; /* Texto em negrito */
+        }
+        .critical { background-color: #800080; }  /* Roxo */
+        .high { background-color: #FF0000; }      /* Vermelho */
+        .medium { background-color: #FFA500; }    /* Laranja */
+        .low { background-color: #FFFF00; color: #000000 !important; }  /* Amarelo com texto preto */
+        .details-container {
+            margin-top: 20px;
+            display: none;
+        }
+        .details-container.active {
+            display: block;
+        }
+        .details-container table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;  /* Layout de tabela fixo para melhor responsividade */
+        }
+        .details-container th, .details-container td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            word-wrap: break-word;  /* Quebra de linha automática em colunas */
+        }
+        .details-container th {
+            background-color: #343a40;
+            color: white;
+            font-size: 1em;
+        }
+        .details-container td {
+            font-size: 0.9em;
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .severity-buttons button {
+                font-size: 0.9em;
+            }
+            .details-container th, .details-container td {
+                font-size: 0.8em;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+            .severity-buttons {
+                flex-direction: column;
+            }
+            .severity-buttons button {
+                max-width: none;  /* Botões ocupam toda a largura */
+                padding: 5px 20px;  /* Metade da altura original */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Boletim de Vulnerabilidades</h1>
+
+        <div class="chart-container">
+            {{ fig|safe }}
+        </div>
+
+        <div class="severity-buttons">
+            <button class="critical" onclick="showDetails('Critical')">Critical</button>
+            <button class="high" onclick="showDetails('High')">High</button>
+            <button class="medium" onclick="showDetails('Medium')">Medium</button>
+            <button class="low" onclick="showDetails('Low')">Low</button>
+        </div>
+
+        <div class="details-container" id="details-container">
+            <h2>Detalhes das CVEs</h2>
+            <div id="cve-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const severities = {
+            Critical: {{ critical|tojson }},
+            High: {{ high|tojson }},
+            Medium: {{ medium|tojson }},
+            Low: {{ low|tojson }}
+        };
+
+        function showDetails(severity) {
+            const container = document.getElementById('cve-list');
+            container.innerHTML = '';  // Limpa o conteúdo atual
+
+            const items = severities[severity] || [];
+            if (items.length === 0) {
+                container.innerHTML = '<p>Nenhuma CVE encontrada para esta severidade.</p>';
+            } else {
+                let table = '<table><thead><tr><th>ID</th><th>Descrição</th></tr></thead><tbody>';
+                items.forEach(item => {
+                    table += `<tr><td>${item.cveID}</td><td>${item.description}</td></tr>`;
+                });
+                table += '</tbody></table>';
+                container.innerHTML = table;
+            }
+
+            document.getElementById('details-container').classList.add('active');
+        }
+
+        showDetails('Critical');  // Exibe os detalhes de "Critical" por padrão
+    </script>
+</body>
+</html>
