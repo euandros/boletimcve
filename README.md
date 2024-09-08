@@ -5,12 +5,12 @@
 ![Versão](https://img.shields.io/badge/versão_:-1.0-darkyellow?style=flat-square) 
 ![Tecnologias](https://img.shields.io/badge/Tecnologias_:-NVDLib,_Jinja2,_Pandas,_Plotly-darkyellow?style=flat-square) 
 
-<p style='text-align: justify;'> 
+
 
 ![image](https://github.com/user-attachments/assets/f1585171-1e05-496d-8e92-edf46d88dfd6)
 
-Este repositório contém um projeto para gerar um boletim de vulnerabilidades utilizando dados obtidos da API NVD (National Vulnerability Database). 
-O projeto permite visualizar as vulnerabilidades de acordo com sua severidade (Crítica, Alta, Média e Baixa), e exibe detalhes dessas vulnerabilidades em um formato HTML responsivo.
+<p style='text-align: justify;'> Este repositório contém um projeto para gerar um boletim de vulnerabilidades utilizando dados obtidos da API NVD (National Vulnerability Database). 
+O projeto permite visualizar as vulnerabilidades de acordo com sua severidade (Crítica, Alta, Média e Baixa), e exibe detalhes dessas vulnerabilidades em um formato HTML responsivo.</p>
 
 ## Estrutura do Projeto
 
